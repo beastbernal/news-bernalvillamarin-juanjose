@@ -1,14 +1,21 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
+import React from "react";
+import PropTypes from "prop-types";
+import { CardGroup, Card, Container, Row, Col } from "react-bootstrap";
+import news from "../news.svg";
+import moment from "moment";
 
 const RepoList = ({ repos, hasError, isLoading }) => {
+
+  const parseDate = (date) => {
+    return  moment(new Date(date*1000)).format("yyyy-MM-DD");
+  }
+
   if (hasError) {
     return (
       <div className="container">
         <h6>Sorry! There was an error loading the repos.</h6>
       </div>
-    )
+    );
   }
 
   if (isLoading) {
@@ -16,43 +23,44 @@ const RepoList = ({ repos, hasError, isLoading }) => {
       <div className="container">
         <h6>Loading…</h6>
       </div>
-    )
+    );
   }
 
   return (
-    <div className="container">
-      {
-        repos.map((repo, i) =>
-          <div
-            className="row border border-info rounded bg-light p-2 m-1"
-           key={i}
-          >
-            <div
-              className="ml-2"
-            >
-              <a
-                href={repo.html_url}
-                className="text-primary"
-                target="blank"
-              >
-                {repo.name}
-              </a>
-              <span
-                className="badge badge-pill badge-secondary ml-2"
-              >
-                {repo.stargazers_count}
-              </span>
-            </div>
-          </div>)
-      }
-    </div>
-  )
-}
+    <>
+      {repos.map((repo, i) => (
+        <Card>
+          <Card.Body>
+            <Container style={{"padding": "0", "margin":"0"}}>
+              <Row className="justify-content-around align-items-center">
+                <Col className="col-2" >
+                  <img
+                    variant="top"
+                    style={{ width: "100%" }}
+                    src={!!repo.img_url ? repo.img_url : news}
+                  />
+                </Col>
+                <Col className="col-10">
+                  <Card.Title>{repo.title}</Card.Title>
+                  <Card.Text>{repo.title}</Card.Text>
+                </Col>
+              </Row>
+            </Container>
+          </Card.Body>
+
+          <Card.Footer>
+            <small className="text-muted">{parseDate(repo.date)}</small>
+          </Card.Footer>
+        </Card>
+      ))}
+    </>
+  );
+};
 
 RepoList.propTypes = {
   repos: PropTypes.array,
   hasError: PropTypes.bool,
-  isLoading: PropTypes.bool
-}
+  isLoading: PropTypes.bool,
+};
 
-export default RepoList
+export default RepoList;

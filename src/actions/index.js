@@ -33,7 +33,8 @@ export const loadingError = bool => (
   
       dispatch(loadingInProgress(true))
   
-      fetch(`https://api.github.com/users/${username}/repos?sort=updated`)
+    //   fetch(`https://api.github.com/users/${username}/repos?sort=updated`)
+      fetch(` https://api.canillitapp.com/latest/` + new Date().toISOString().slice(0,10))
         .then((response) => {
           if (!response.ok) {
             throw Error(response.statusText)
@@ -44,7 +45,7 @@ export const loadingError = bool => (
           return response
         })
         .then((response) => response.json())
-        .then((repos) => dispatch(loadingSuccess(repos)))
+        .then((repos) => dispatch(loadingSuccess(repos.slice(0,10))))
         .catch(() => dispatch(loadingError(true)))
     }
   }

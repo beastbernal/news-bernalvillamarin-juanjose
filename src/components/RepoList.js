@@ -7,7 +7,7 @@ import moment from "moment";
 const RepoList = ({ repos, hasError, isLoading }) => {
 
   const parseDate = (date) => {
-    return  moment(new Date(date*1000)).format("yyyy-MM-DD");
+    return  moment().utcOffset(0, true).format("yyyy-MM-DD");
   }
 
   if (hasError) {

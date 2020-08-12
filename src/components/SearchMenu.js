@@ -6,7 +6,7 @@ const SearchMenu = ({ defaultUser, onGet, onClear }) => {
 
   return (
     <div className="container">
-      <h5>Obteniendo los repos por username:</h5>
+      <h5>Buscar noticia por la fecha</h5>
       <div className="row">
         <div className="col">
           <div className="input-group mb-3">
@@ -22,7 +22,7 @@ const SearchMenu = ({ defaultUser, onGet, onClear }) => {
             <input
               type="text"
               className="form-control"
-              placeholder="input Git username"
+              placeholder="fecha"
               aria-label=""
               aria-describedby="basic-addon1"
               defaultValue={defaultUser}

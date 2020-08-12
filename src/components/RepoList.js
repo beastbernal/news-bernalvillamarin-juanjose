@@ -38,6 +38,7 @@ const RepoList = ({ repos, hasError, isLoading }) => {
                     variant="top"
                     style={{ width: "100%" }}
                     src={!!repo.img_url ? repo.img_url : news}
+                    alt={repo.title + '-img'}
                   />
                 </Col>
                 <Col className="col-10">

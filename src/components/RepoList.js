@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { CardGroup, Card, Container, Row, Col } from "react-bootstrap";
+import {  Card, Container, Row, Col } from "react-bootstrap";
 import news from "../news.svg";
 import moment from "moment";
 

@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Navbar, Nav, Form, FormControl, Button} from  "react-bootstrap";
 
 const SearchMenu = ({ defaultUser, onGet, onClear }) => {
   let _input;
 
   return (
+    <>
     <div className="container">
       <h5>Buscar noticia por la fecha</h5>
       <div className="row">
@@ -41,6 +43,7 @@ const SearchMenu = ({ defaultUser, onGet, onClear }) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export const loadingError = bool => (
     {
       type: 'LOADING_ERROR',
@@ -25,7 +27,7 @@ export const loadingError = bool => (
     }
   )
   
-  export const getRepos = username => {
+  export const getRepos = category => {
     return dispatch => {
       dispatch(clearRepos())
   
@@ -33,8 +35,7 @@ export const loadingError = bool => (
   
       dispatch(loadingInProgress(true))
   
-    //   fetch(`https://api.github.com/users/${username}/repos?sort=updated`)
-      fetch(` https://api.canillitapp.com/latest/` + new Date().toISOString().slice(0,10))
+      fetch(` https://api.canillitapp.com/news/category/` + category)
         .then((response) => {
           if (!response.ok) {
             throw Error(response.statusText)

@@ -1,11 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import {  Card, Container, Row, Col } from "react-bootstrap";
 import news from "../news.svg";
 import moment from "moment";
 
-const RepoList = ({ repos, hasError, isLoading }) => {
-
+const RepoList = ({ category, repos, hasError, isLoading, onGet, onClear }) => {
+  useEffect(() => {
+    console.log('category', category);
+    onClear();
+    onGet(category);
+  }, [] );
+  
   const parseDate = (date) => {
     return  moment().utcOffset(0, true).format("yyyy-MM-DD");
   }
@@ -28,6 +33,7 @@ const RepoList = ({ repos, hasError, isLoading }) => {
 
   return (
     <>
+      <div>Categoria {category}</div>
       {repos.map((repo, i) => (
         <Card>
           <Card.Body>

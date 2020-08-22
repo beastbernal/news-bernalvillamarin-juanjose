@@ -1,19 +1,18 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import {  Card, Container, Row, Col } from "react-bootstrap";
+import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import news from "../news.svg";
 import moment from "moment";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const RepoList = ({ category, repos, hasError, isLoading, onGet, onClear }) => {
   useEffect(() => {
-    console.log('category', category);
-    onClear();
     onGet(category);
-  }, [] );
-  
+  }, [category, onGet]);
+
   const parseDate = (date) => {
-    return  moment().utcOffset(0, true).format("yyyy-MM-DD");
-  }
+    return moment().utcOffset(0, true).format("yyyy-MM-DD");
+  };
 
   if (hasError) {
     return (
@@ -25,38 +24,64 @@ const RepoList = ({ category, repos, hasError, isLoading, onGet, onClear }) => {
 
   if (isLoading) {
     return (
-      <div className="container">
-        <h6>Loading…</h6>
-      </div>
+      <>
+        <ul className="list">
+          {Array(10)
+            .fill()
+            .map((item, index) => (
+              <li className="card" key={index} style={{ width: "95%" }}>
+                <h4 className="card-title">
+                  <Skeleton circle={true} height={50} width={50} />
+                  <Skeleton height={36} width={`80%`} />
+                </h4>
+                <p className="card-channel">
+                  <Skeleton width={`60%`} />
+                </p>
+                <div className="card-metrics">
+                  <Skeleton width={`90%`} />
+                </div>
+              </li>
+            ))}
+        </ul>
+      </>
     );
   }
 
   return (
     <>
-      <div>Categoria {category}</div>
       {repos.map((repo, i) => (
         <Card>
           <Card.Body>
-            <Container style={{"padding": "0", "margin":"0"}}>
+            <Container style={{ padding: "0", margin: "0" }}>
               <Row className="justify-content-around align-items-center">
-                <Col className="col-2" >
+                <Col className="col-2">
                   <img
                     variant="top"
                     style={{ width: "100%" }}
                     src={!!repo.img_url ? repo.img_url : news}
-                    alt={repo.title + '-img'}
+                    alt={repo.title + "-img"}
                   />
                 </Col>
                 <Col className="col-10">
                   <Card.Title>{repo.title}</Card.Title>
-                  <Card.Text>{repo.title}</Card.Text>
+                  <Card.Text className="link-news">
+                    <Button
+                      className="button-link"
+                      href={repo.url}
+                      target="_blank"
+                    >
+                      Ver Noticia >
+                    </Button>
+                  </Card.Text>
                 </Col>
               </Row>
             </Container>
           </Card.Body>
 
           <Card.Footer>
-            <small className="text-muted">{parseDate(repo.date)}</small>
+            <small className="text-muted">
+              Fecha de la Noticia: <strong>{parseDate(repo.date)}</strong>
+            </small>
           </Card.Footer>
         </Card>
       ))}

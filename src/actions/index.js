@@ -28,6 +28,34 @@ export const loadingError = bool => (
   )
   
   export const getRepos = category => {
+    
+    const CATEGORY_DESCRIPTION = [{
+      route: 'latest/',
+      param: moment().utcOffset(0, true).format("yyyy-MM-DD")
+    },{
+      route: 'news/category/',
+      param: 1
+    },{
+      route: 'news/category/',
+      param: 2
+    },
+    {
+      route: 'news/category/',
+      param: 3
+    },
+    {
+      route: 'news/category/',
+      param: 4
+    },
+    {
+      route: 'news/category/',
+      param: 5
+    },
+    {
+      route: 'news/category/',
+      param: 6
+    }
+    ];
     return dispatch => {
       dispatch(clearRepos())
   
@@ -35,7 +63,7 @@ export const loadingError = bool => (
   
       dispatch(loadingInProgress(true))
   
-      fetch(` https://api.canillitapp.com/news/category/` + category)
+      fetch(`https://api.canillitapp.com/` + CATEGORY_DESCRIPTION[category].route + CATEGORY_DESCRIPTION[category].param)
         .then((response) => {
           if (!response.ok) {
             throw Error(response.statusText)

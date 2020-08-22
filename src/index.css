@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #41444b;
+  color: gainsboro;
 }
 
 code {
@@ -15,4 +17,85 @@ code {
 .card-horizontal {
   display: flex;
   flex: 1 1 auto;
+}
+
+.card {
+  background-color: rgba(0,0,0,.12)!important;
+  margin: 30px!important;
+  border: 1px solid rgba(246,244,230,.125)!important;
+  border-radius: 20px;
+}
+
+.a-link {
+  color: azure;
+}
+
+.a-link:hover {
+  background-color: rgba(192, 192, 192, 0.1);
+  color: gold;
+}
+
+.brand-text {
+  text-shadow: 1px 1px 2px #7DFDFE; 
+}
+
+.brand-text:hover {
+  background-color: rgba(192, 192, 192, 0.1);
+  color: gold!important;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #52575D;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #440047;
+}
+
+.text-muted {
+  color: #d49a89!important;
+}
+
+.card-footer {
+  text-align: end!important;
+}
+
+.link-news{
+  color: #5eaaa8;
+  text-align: end!important;
+}
+
+.button-link {
+  background-color: #056676;
+  color:white;
+}
+
+.search-box {
+  background-color: #52575D;
+  background-color: #52575D;
+  padding: 20px;
+  width: 100%;
+  max-width: 100%!important;
+  
 }

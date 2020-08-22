@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import news from "../news.svg";
 import moment from "moment";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import Skeleton from "react-loading-skeleton";
 
 const RepoList = ({ category, repos, hasError, isLoading, onGet, onClear }) => {
   useEffect(() => {

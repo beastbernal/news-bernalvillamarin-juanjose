@@ -14,6 +14,11 @@ const App = () => {
   }
   return (
     <>
+      <div class="parallax">
+      <header className="main-header">
+        <h1>News :: React Avanzado </h1>
+      </header>
+      </div>
       <Router>
         <div>
           <nav fixed="top">

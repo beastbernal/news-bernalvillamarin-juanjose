@@ -99,3 +99,24 @@ li a:hover:not(.active) {
   max-width: 100%!important;
   
 }
+
+
+.parallax {
+  /* The image used */
+  background-image: url("news.jpg");
+
+  /* Set a specific height */
+  height: 250px;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main-header {
+  position: absolute;
+  top: 190px;
+  right: 25px;
+  text-shadow:  2px 2px #558ABB;
+}

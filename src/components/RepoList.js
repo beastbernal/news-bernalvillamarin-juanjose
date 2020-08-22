@@ -14,6 +14,12 @@ const RepoList = ({ category, repos, hasError, isLoading, onGet, onClear }) => {
     return moment().utcOffset(0, true).format("yyyy-MM-DD");
   };
 
+  const parseUrl = (url) => {
+    const parse_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
+    const parts = parse_url.exec(url);
+    return parts[3];
+  };
+
   if (hasError) {
     return (
       <div className="container">
@@ -65,6 +71,7 @@ const RepoList = ({ category, repos, hasError, isLoading, onGet, onClear }) => {
                 <Col className="col-10">
                   <Card.Title>{repo.title}</Card.Title>
                   <Card.Text className="link-news">
+                    <p>Fuente: <strong>{parseUrl(repo.url)}</strong></p>
                     <Button
                       className="button-link"
                       href={repo.url}
